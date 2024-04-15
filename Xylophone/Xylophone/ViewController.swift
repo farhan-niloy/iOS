@@ -10,10 +10,10 @@ import UIKit
 import AVFoundation //audio visual foundational module
 
 class ViewController: UIViewController {
-    var player: AVAudioPlayer?
+    var player: AVAudioPlayer!
 
-    func playSound() {
-        guard let path = Bundle.main.path(forResource: "C", ofType: "wav") else {
+    func playSound(soundName: String) {
+        guard let path = Bundle.main.path(forResource: "soundName", ofType: "wav") else {
             print("Sound file not found.")
             return
         }
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func keyPressed(_ sender: UIButton) {
-        playSound()
+        playSound(soundName: sender.currentTitle!)
     }
     
     
