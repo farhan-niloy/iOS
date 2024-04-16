@@ -13,8 +13,9 @@ class ViewController: UIViewController {
     var player: AVAudioPlayer!
 
     func playSound(soundName: String) {
-        guard let path = Bundle.main.path(forResource: "soundName", ofType: "wav") else {
+        guard let path = Bundle.main.path(forResource: soundName, ofType: "wav") else {
             print("Sound file not found.")
+            print(soundName)
             return
         }
         let url = URL(fileURLWithPath: path)
