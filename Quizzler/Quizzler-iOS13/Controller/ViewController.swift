@@ -40,12 +40,8 @@ class ViewController: UIViewController {
             sender.backgroundColor = UIColor.red
         }
         
-        if quizBrain.quizz.count > quizBrain.questionNumber+1 {
-            quizBrain.questionNumber += 1
-        } else {
-            quizBrain.questionNumber = 0
-        }
-        
+        quizBrain.nextQuestion()
+                
         Timer.scheduledTimer(timeInterval: timerDelay, target: self, selector: #selector(UpdateUI), userInfo: nil, repeats: false)
     }
     
