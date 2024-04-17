@@ -16,15 +16,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var falseButton: UIButton!
     
     let quizz = [
-        Questions(question: "Farhan loves Fahmida", answer: "True"),
-        Questions(question: "Fahmida loves Farhan", answer: "False"),
-        Questions(question: "Fahmida is the most mijestic girl Farhan's eye", answer: "True"),
-        Questions(question: "Fahmida is smart", answer: "True"),
-        Questions(question: "Farhan's dream girl is Fahmida", answer: "True"),
-        Questions(question: "Fahmida is a great artist", answer: "True"),
-        Questions(question: "Fahmida herself is a piece of art", answer: "True"),
+        Questions(q: "Farhan loves Fahmida", a: "True"),
+        Questions(q: "Fahmida loves Farhan", a: "False"),
+        Questions(q: "Fahmida is the most mijestic girl Farhan's eye", a: "True"),
+        Questions(q: "Fahmida is smart", a: "True"),
+        Questions(q: "Farhan's dream girl is Fahmida", a: "True"),
+        Questions(q: "Fahmida is a great artist", a: "True"),
+        Questions(q: "Fahmida herself is a piece of art", a: "True"),
         ]
+    
     var questionNumber = 0
+    var timer = Timer()
+    
+    var timerDelay = 0.2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +45,10 @@ class ViewController: UIViewController {
         
         if userAnswer == actualAnswer {
             print("Right!")
+            sender.backgroundColor = UIColor.green
         } else {
             print("Wrong!")
+            sender.backgroundColor = UIColor.red
         }
         
         if quizz.count > questionNumber+1 {
@@ -51,13 +57,15 @@ class ViewController: UIViewController {
             questionNumber = 0
         }
         
-        UpdateUI()
+        Timer.scheduledTimer(timeInterval: timerDelay, target: self, selector: #selector(UpdateUI), userInfo: nil, repeats: false)
     }
     
-    func UpdateUI() {
+    @objc func UpdateUI() {
         questionLabel.text = quizz[questionNumber].question
+        trueButton.backgroundColor = UIColor.clear
+        falseButton.backgroundColor = UIColor.clear
+        progressBar.progress = Float(questionNumber) / Float(quizz.count)
     }
     
-
 }
 
