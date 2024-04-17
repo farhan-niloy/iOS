@@ -16,15 +16,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var falseButton: UIButton!
     
     let quizz = [
-        ["Farhan loves Fahmida", "True"],
-        ["Fahmida loves Farhan", "False"],
-        ["Fahmida is the most mijestic girl Farhan's eye", "True"],
-        ["Fahmida is smart", "True"],
-        ["Farhan's dream girl is Fahmida", "True"],
-        ["Fahmida is a great artist", "True"],
-        ["Fahmida herself is a piece of art", "True"]
-    ]
-    
+        Questions(question: "Farhan loves Fahmida", answer: "True"),
+        Questions(question: "Fahmida loves Farhan", answer: "False"),
+        Questions(question: "Fahmida is the most mijestic girl Farhan's eye", answer: "True"),
+        Questions(question: "Fahmida is smart", answer: "True"),
+        Questions(question: "Farhan's dream girl is Fahmida", answer: "True"),
+        Questions(question: "Fahmida is a great artist", answer: "True"),
+        Questions(question: "Fahmida herself is a piece of art", answer: "True"),
+        ]
     var questionNumber = 0
     
     override func viewDidLoad() {
@@ -38,7 +37,7 @@ class ViewController: UIViewController {
     @IBAction func answerButtonPressed(_ sender: UIButton) {
         
         let userAnswer = sender.currentTitle
-        let actualAnswer = quizz[questionNumber][1]
+        let actualAnswer = quizz[questionNumber].answer
         
         if userAnswer == actualAnswer {
             print("Right!")
@@ -50,14 +49,13 @@ class ViewController: UIViewController {
             questionNumber += 1
         } else {
             questionNumber = 0
-            questionNumber += 1
         }
         
         UpdateUI()
     }
     
     func UpdateUI() {
-        questionLabel.text = quizz[questionNumber][0]
+        questionLabel.text = quizz[questionNumber].question
     }
     
 
