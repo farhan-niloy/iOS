@@ -9,16 +9,35 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var storyLabel: UILabel!
     @IBOutlet weak var choice1Button: UIButton!
     @IBOutlet weak var choice2Button: UIButton!
     
+    var storyBrain = StoryBrain()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        updateUI()
+        
+    }
+    
+    
+    
+    @IBAction func Choice1(_ sender: UIButton) {
+    }
+    
+    @IBAction func Choice2(_ sender: UIButton) {
+    }
+    
+    
+    func updateUI() {
+        storyLabel.text = storyBrain.stories[storyBrain.storyCount].title
+        
+        choice1Button.setTitle(storyBrain.stories[storyBrain.choice1Count], for: .normal)
+        choice2Button.setTitle("myTitle", for: .normal)
 
     }
-
-
+    
 }
-
