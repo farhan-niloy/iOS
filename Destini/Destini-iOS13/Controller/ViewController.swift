@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+
     @IBOutlet weak var storyLabel: UILabel!
     @IBOutlet weak var choice1Button: UIButton!
     @IBOutlet weak var choice2Button: UIButton!
@@ -20,24 +20,53 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         updateUI()
+
+    }
+
+    @IBAction func choiceMade(_ sender: UIButton) {
         
+        storyBrain.nextStory(userChoice: sender.currentTitle!)
+        
+        updateUI()
+     
     }
-    
-    
-    
-    @IBAction func Choice1(_ sender: UIButton) {
-    }
-    
-    @IBAction func Choice2(_ sender: UIButton) {
-    }
-    
     
     func updateUI() {
-        storyLabel.text = storyBrain.stories[storyBrain.storyCount].title
-        
-        choice1Button.setTitle(storyBrain.stories[storyBrain.choice1Count], for: .normal)
-        choice2Button.setTitle("myTitle", for: .normal)
-
+        storyLabel.text = storyBrain.getStoryTitle()
+        choice1Button.setTitle(storyBrain.getChoice1(), for: .normal)
+        choice2Button.setTitle(storyBrain.getChoice2(), for: .normal)
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
