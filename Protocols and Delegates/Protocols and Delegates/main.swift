@@ -21,13 +21,40 @@ class EmergencyCallHandler {
     }
 }
 
-struct Pramadic: AdvancedLifeSupport {
+struct Paramedic: AdvancedLifeSupport {
     
     init (handler: EmergencyCallHandler) {
         handler.delegate = self
     }
     
     func performCPR() {
-        print("CPR - Done!")
+        print("CPR - on progress")
     }
 }
+
+class Doctor: AdvancedLifeSupport {
+    
+    init(handler: EmergencyCallHandler) {
+        handler.delegate = self
+    }
+    
+    func performCPR() {
+        print("CPR - on progress")
+    }
+}
+
+class Surgeon: Doctor {
+    override func performCPR() {
+        print("Sings staying alive by the BeeGees....")
+    }
+    
+    func useElectricDrill() {
+        print("Whirrr....")
+    }
+}
+
+let emilio = EmergencyCallHandler()
+let pete = Surgeon(handler: emilio)
+
+emilio.assessSisuation()
+emilio.medicalEmergency()
